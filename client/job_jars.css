@@ -1,0 +1,227 @@
+body {
+    padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
+    margin-bottom: 60px;
+    position: relative;
+    padding-bottom: 80px;
+    height: 100%;
+}
+
+.center {
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+}
+
+.footer {
+    position: absolute;
+    text-align: center;
+    bottom: 0;
+    margin-top: -75px;
+    left: 0;
+    height: 75px;
+    width: 100%;
+    background-color: #ffffcc;
+    clear: both;
+}
+
+.footer p {
+    padding-top: 20px;
+}
+
+.footer  table {
+    width: 100%;
+    bottom:0;
+    height:75px;   /* Height of the footer */
+    text-align:right;
+    font-size:15px;
+    border: none;
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+}
+
+.List {
+    padding-top: 20px;
+    padding-left: 5px;
+    padding-right: 10px;
+    padding-bottom: 20px;
+    border-color: #000000;
+    border-width: 2px;
+    border-style: solid;
+    border-radius: 15px;
+    -moz-border-radius: 15px;
+    width: 100%;
+
+}
+
+
+#main-container {
+    min-height: 700px;
+    padding: 15px 10px 10px 10px;
+    height: 100vh;
+    position: relative;
+}
+
+.List td {
+    width: auto;
+    border: 1px solid black;
+}
+
+.List th {
+    width: auto;
+    border: 1px solid black;
+}
+
+#registerBtn {
+    font-family: Arial, sans-serif;
+    font-size: 25px;
+    height: 3em;
+    margin-bottom: 15px;
+    margin-top: -45px;
+    z-index: 1;
+    position: relative;
+}
+
+.logout p {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    font-size: 24px;
+    padding: 10px 10px 10px 10px;
+
+}
+.logoImage {
+    padding: 10px;
+}
+
+
+.listPanel {
+    height: 50vh;
+    border:1px solid black;
+    width: 25%;
+    margin: 10px 40px 40px 0px;
+
+}
+
+#sidenav {
+    background-color: #7CC7FF;
+    height: 100vh;
+}
+
+
+#logo {
+    height: 50px;
+    width: 200px;
+}
+
+.rightNav {
+    float: right;
+}
+
+.block {
+    margin-bottom: 100px;
+}
+
+#jobsCarousel {
+    padding-bottom: 50px;
+}
+
+#customBtn {
+    display: inline-block;
+    background: #dd4b39;
+    color: white;
+    width: 165px;
+    border-radius: 5px;
+    white-space: nowrap;
+}
+#customBtn:hover {
+    background: #e74b37;
+    cursor: hand;
+}
+
+span.label {
+    font-weight: bold;
+}
+span.icon {
+    background: url('https://google-developers.appspot.com/+/images/branding/btn_red_32.png') transparent 5px 50% no-repeat;
+    display: inline-block;
+    vertical-align: middle;
+    width: 35px;
+    height: 35px;
+    border-right: #bb3f30 1px solid;
+}
+span.buttonText {
+    display: inline-block;
+    vertical-align: middle;
+    padding-left: 35px;
+    padding-right: 35px;
+    font-size: 14px;
+    font-weight: bold;
+    /* Use the Roboto font that is loaded in the <head> */
+    font-family: 'Roboto',arial,sans-serif;
+}
+
+#gSignInWrapper {
+    width:165px;
+    float:left
+}
+
+#revokeButton {
+    display:none
+}
+
+#profile table {
+    background-color: #C8E8FF;
+    position: relative;
+    margin-bottom: 2em;
+    width: 100%;
+}
+
+#profile table tr {
+    background-color: lightgrey;
+    border: 1px solid black;
+    border-radius: 10;
+    margin-bottom: 10px;
+}
+
+#profile table td {
+    padding: 5px 5px 5px 5px;
+
+    width: auto;
+}
+
+#profile button {
+    margin: 1em;
+}
+
+.column {
+    width: 170px;
+    float: left;
+    padding-bottom: 100px;
+}
+.portlet {
+    margin: 0 1em 1em 0;
+    padding: 0.3em;
+}
+.portlet-header {
+    padding: 0.2em 0.3em;
+    margin-bottom: 0.5em;
+    position: relative;
+}
+.portlet-toggle {
+    position: absolute;
+    top: 50%;
+    right: 0;
+    margin-top: -8px;
+}
+.portlet-content {
+    padding: 0.4em;
+}
+.portlet-placeholder {
+    border: 1px dotted black;
+    margin: 0 1em 1em 0;
+    height: 50px;
+}
+
+.about {
+    width: 50%;
+}

@@ -1,0 +1,88 @@
+<template name="homePage">
+    <div class="container-fluid">
+        <div class="jumbotron">
+            <h1>The Easy, Effective Way to Get Household Chores Done!</h1>
+            <p>No more fussing, no more arguing, no more nagging!</p>
+            <p><a class="btn btn-primary btn-lg" role="button" href="/register">Sign Up Now</a></p>
+        </div>
+    </div>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-4">
+                <h1>Reason Number 1</h1>
+                <p class="block">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed molestie lacus non magna varius sollicitudin. Cras efficitur hendrerit viverra. Curabitur id facilisis quam. Aliquam et malesuada lorem, et convallis magna. Fusce enim nisl, vehicula sit amet cursus eget, cursus et nunc. Duis tincidunt consequat purus elementum efficitur. Vestibulum at laoreet eros. Etiam eu blandit purus.</p>
+
+            </div>
+            <div class="col-md-4">
+                <h1>Reason number 2</h1>
+                <p class="block">Etiam placerat lacinia pulvinar. Pellentesque a est eget erat fermentum cursus. Nunc lobortis erat in mauris mollis porttitor. Proin sit amet egestas urna. Etiam convallis sed risus eu egestas. Proin feugiat risus non justo dictum consequat. Nam rhoncus tincidunt sapien, vitae finibus enim ornare in. Fusce quis est sed ex ultricies volutpat vel a purus. Maecenas elementum tellus quis urna maximus, et lobortis quam rutrum. Aenean scelerisque efficitur quam nec aliquam. Praesent mattis mauris hendrerit, blandit metus varius, imperdiet felis.</p>
+            </div>
+            <div class="col-md-4">
+                <h1>Reason number 3</h1>
+                <p class="block">In dictum ullamcorper elementum. Nam ante risus, eleifend sit amet neque eu, gravida condimentum diam. Pellentesque mollis ligula eu accumsan lacinia. Praesent arcu dui, aliquam non rutrum at, sodales in nibh. Proin at aliquet felis. Nulla tincidunt, purus nec molestie vestibulum, augue leo interdum mauris, nec tempor erat lorem ut sem. Duis pretium turpis a dolor posuere scelerisque. Nulla imperdiet arcu eget dui ullamcorper dapibus. Aliquam porta tellus arcu, non placerat nunc bibendum nec. Vivamus viverra laoreet aliquet. Sed quam leo, euismod eu nibh in, bibendum euismod orci. Vivamus pharetra bibendum justo. Donec fermentum magna ut felis placerat vehicula. Curabitur in leo cursus, cursus lorem sit amet, bibendum augue. Phasellus vel est vel ex dignissim pulvinar vel sed sapien. In a ultrices purus.</p>
+            </div>
+        </div>
+    </div>
+</template>
+
+
+<template name="navbar">
+    <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="{{pathFor 'home_page'}}">Job Jars</a>
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li><a href="{{pathFor 'home_page'}}">Home</a></li>
+                    <li><a href="{{pathFor 'about'}}">About</a></li>
+                    {{> loginButtons }}
+                </ul>
+                <!--
+                <ul class="nav navbar-nav pull-right">
+                    {{#if currentUser}}
+                    <li><a href="/logout">Sign Out</a></li>
+                    {{else}}
+                    <li><a href="/register">Sign Up</a></li>
+                    <li><a href="/login">Sign In</a></li>
+                    {{/if}}
+                </ul>
+                -->
+            </div>
+        </div>
+    </nav>
+</template>
+
+<template name="fixedFooter">
+    <div class="footer">
+        <div class="row-fluid">
+            <div class="col-md-6">
+                <p class="text-muted">&copy; Copyright 2014 Joe Lofshult. All Rights Reserved</p>
+            </div>
+            <div class="col-md-6">
+                <table>
+                    <tr><td>Follow Our Blog</td></tr>
+                    <tr><td>Follow Us on Twitter</td></tr>
+                    <tr><td>Like Us on Facebook</td></tr>
+                </table>
+            </div>
+
+        </div>
+    </div>
+</template>
+
+<template name="loading">
+    {{> spinner}}
+</template>
+
+<template name="notFound">
+    <div class="container">
+        <h1>This is not the page you are looking for. Take the red pill and return to your bed.</h1>
+    </div>
+</template>

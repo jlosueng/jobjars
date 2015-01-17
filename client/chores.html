@@ -1,0 +1,53 @@
+<template name="chores">
+    <div class="span9" id="choreList">
+        <h1>Tasks</h1>
+            <div class="column">
+            {{#each tasks}}
+                <div class="portlet">
+                    <div class="portlet-header">
+                        <a href="{{pathFor 'taskDetail'}}">{{task}}</a>
+                    </div>
+                    <div class="portlet-content">
+                    </div>
+                </div>
+            {{/each}}
+            </div>
+        <div id="addTask">
+          <a href="#">
+            <i class='icon-plus'></i>
+            Add Task
+          </a>
+        </div>
+        {{>addTask}}
+    </div>
+</template>
+
+<template name="addTask">
+    <div class="container" id="newTask">
+        <form name="newTask" id="newTaskForm">
+            <input type="text" id="taskDesc" name="taskDesc" placeholder="Task description" /><br>
+            <input type="text" id="taskValue" name="taskValue" placeholder="Task value" /><br>
+            <select name="taskFreq" id="taskFreq">
+                <option value="Daily">Daily</option>
+                <option value="Weekly">Weekly</option>
+                <option value="Monthly">Monthly</option>
+            </select><br>
+            <p>Only allowed to perform the task</p>
+            <input type="checkbox" name="restrictedTo" value="hannah">Hannah<br>
+            <input type="checkbox" name="restrictedTo" value="nikki">Nikki<br>
+            <input type="checkbox" name="restrictedTo" value="kelsey">Kelsey<br>
+            <input type="checkbox" name="restrictedTo" value="dylan">Dylan<br>
+            <p>Age restrictions</p>
+            <select name="ageRestriction">
+                <option value="u5">Younger than 5</option>
+                <option value="al5">At least 5 years old</option>
+                <option value="al7">At least 7 years old</option>
+                <option value="al9">At least 9 years old</option>
+                <option value="al11">At least 11 years old</option>
+                <option value="al13">At least 13 years old</option>
+                <option value="al16">At least 16 years old</option>
+            </select><br>
+            <button class="btn" id="btnAddTask">Add Task</button>
+        </form>
+    </div>
+</template>

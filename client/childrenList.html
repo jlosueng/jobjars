@@ -1,0 +1,19 @@
+<template name="childrenList">
+    <table class="List">
+      <h1>Children</h1>
+      <thead>
+        <tr>
+          <th>Name</th><th></th>
+        </tr>
+      </thead>
+      <tbody>
+         {{#each list}}
+           <tr>
+             <td><a href="{{pathFor 'child'}}">{{name}}</a></td><td></td>
+           </tr>
+         {{/each}}
+      </tbody>
+    </table>
+    <i class='icon-plus'></i>
+    <span id="addChild">Add Child</span>
+</template>
