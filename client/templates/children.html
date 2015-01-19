@@ -1,0 +1,28 @@
+<template name="children">
+    <h1>Children</h1>
+    <table class="List" >
+        <tr>
+            <th>Name</th>
+            <th>Chores Completed</th>
+            <th>Rewards Earned</th>
+
+        </tr>
+        {{#each child}}
+        <tr>
+            <td><a href="{{pathFor 'child'}}">{{task}}</a></td>
+            <td>{{name}}</td>
+            <td>{{completed}}</td>
+            <td>{{rewardsEarned}}</td>
+        </tr>
+        {{/each}}
+    </table>
+
+        <span id="addChild">
+          <a href="#">
+              <i class='icon-plus'></i>
+              Add Child
+          </a>
+        </span>
+    {{>addChild}}
+</template>
+

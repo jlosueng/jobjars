@@ -1,0 +1,8 @@
+<template name="layout">
+        {{> yield region="navbar"}}
+        <div class="container-fluid" id="main-container">
+        {{> yield}}
+        </div>
+        {{> yield region="footer"}}
+</template>
+
