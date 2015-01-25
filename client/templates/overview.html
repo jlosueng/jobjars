@@ -1,4 +1,5 @@
 <template name="overview">
+    {{#if currentUser}}
     <h1>Dashboard</h1>
     <div class="row-fluid">
         <div class="col-md-3 col-lg-3 listPanel" >
@@ -7,11 +8,12 @@
         <div class="col-md-3 col-lg-3 listPanel" >
             {{> children}}
         </div>
-        <div class="col-md-2 col-lg-2 listPanel">
+        <div class="col-md-2 col-lg-3 listPanel">
             {{> rewardsEarned}}
         </div>
         <div class="col-md-3 col-lg-3 listPanel">
             {{> choresDone}}
         </div>
     </div>
+    {{/if}}
 </template>

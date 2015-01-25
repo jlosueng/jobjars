@@ -1,0 +1,24 @@
+<template name="myChores">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+            <h1>My Chore List</h1>
+            <ul>
+            {{#each tasks}}
+                <div class="chore" draggable="true">
+                    <span>{{task}}</span>
+                    <span>{{value}}</span>
+                </div>
+            {{/each}}
+            </ul>
+            </div>
+
+            <div class="col-md-8">
+                <h1>My Completed Chores</h1>
+                <div class="jar" droppable="true">
+
+                </div>
+            </div>
+        </div>
+    </div>
+</template>

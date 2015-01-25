@@ -1,9 +1,21 @@
 <template name="addChild">
     <div class="container" id="newChild">
         <form name="newTask" id="newChildForm">
-            <input type="text" id="childName" name="childName" placeholder="Name" /><br>
-            <input type="date" id="childDob" name="childDob" placeholder="Birthdate" /><br>
+            <label>Your child's name</label>
+            <input type="text" id="childName" size=50 name="childName" placeholder="Full Name" /><br>
+            <label>Username for your child to login to JobJars</label>
+            <input type="text" id="userID" size=50 name="childUserID" placeholder="Username" /><br>
+            <label>Your child's date of birth (for age calculation)</label><br>
+            <input type="date" id="childDob" size=50 name="childDob" placeholder="Birthdate" /><br>
             <button class="btn" id="btnAddChild" type="submit" action="submit">Add Child</button>
         </form>
+        <p>
+            <a class="closeBox">
+                <span class="glyphicons glyphicons-remove">
+
+                </span>
+                Close Window
+            </a>
+        </p>
     </div>
 </template>

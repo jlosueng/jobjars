@@ -3,6 +3,7 @@
  */
 
 Meteor.subscribe('tasks');
+Meteor.subscribe('people');
 
 Template.chores.events({
     'click #addTask' : function(event) {
@@ -25,6 +26,31 @@ Template.choresDone.helpers({
     }
 });
 
+Template.myChores.helpers({
+    'tasks': function() {
+        return Tasks.find();
+    }
+});
+
+Template.myChores.events ({
+    'dragstart .chore': function(e) {
+        e.dataTransfer = e.originalEvent.dataTransfer;
+        e.dataTransfer.setData('text', this._id);
+    },
+    'dragover .jar': function(e) {
+        e.preventDefault();
+    },
+    'drop .jar': function(e) {
+        e.preventDefault();
+        e.dataTransfer = e.originalEvent.dataTransfer;
+        var id = e.dataTransfer.getData('text');'' +
+        console.log(e);
+        e.target.appendChild(document.getElementById(id));
+    }
+});
+
+Template.myChores.rendered = function() {
+};
 
 Template.children.events({
     'click #addChild' : function(event) {
@@ -32,9 +58,17 @@ Template.children.events({
     }
 });
 
+Template.children.helpers({
+    'child': function() {
+        return People.find();
+    }
+});
+
 Template.children.rendered = function() {
     $('#newChild').hide();
 };
+
+
 
 Template.addChild.events({
     'click #btnAddChild' : function(e, t) {
@@ -42,7 +76,15 @@ Template.addChild.events({
         var name = t.find('#childName').value,
             dob = t.find('#childDob').value;
         var userId = Meteor.userId();
-        var found = false ? People : true;
+        People.insert({'userID': userId, 'name': name, 'dob':dob});
+        var container = $('#newChild');
+        container.hide();
+    },
+    'click .closeBox' : function(e) {
+        e.preventDefault();
+        var container = $('#newChild');
+        container.hide();
+
     }
 });
 
@@ -71,6 +113,16 @@ $( ".column" ).sortable({
         ui.item.removeClass("tilt");
         $("html").unbind('mousemove', ui.item.data("move_handler"));
         ui.item.removeData("move_handler");
+    }
+});
+
+Template.rewardsEarned.rendered = function() {
+};
+
+Template.rewardsEarned.events({
+    'click .btn': function(e, t){
+        e.preventDefault();
+        alert('Reward button clicked');
     }
 });
 
