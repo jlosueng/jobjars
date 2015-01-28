@@ -5,6 +5,10 @@
 Meteor.subscribe('tasks');
 Meteor.subscribe('people');
 
+Meteor.startup(function() {
+
+});
+
 Template.chores.events({
     'click #addTask' : function(event) {
         $('#newTask').toggle();
@@ -29,10 +33,19 @@ Template.choresDone.helpers({
 Template.myChores.helpers({
     'tasks': function() {
         return Tasks.find();
+    },
+
+    'mines': function() {
+        return Tasks.find();
+    },
+
+    'dones': function() {
+        return Tasks.find();
     }
 });
 
 Template.myChores.events ({
+/*
     'dragstart .chore': function(e) {
         e.dataTransfer = e.originalEvent.dataTransfer;
         e.dataTransfer.setData('text', this._id);
@@ -40,16 +53,21 @@ Template.myChores.events ({
     'dragover .jar': function(e) {
         e.preventDefault();
     },
+*/
     'drop .jar': function(e) {
+
         e.preventDefault();
         e.dataTransfer = e.originalEvent.dataTransfer;
-        var id = e.dataTransfer.getData('text');'' +
-        console.log(e);
+        var id = e.dataTransfer.getData('text');
         e.target.appendChild(document.getElementById(id));
     }
 });
 
 Template.myChores.rendered = function() {
+    $('body').on('dragstop', '.chore', function(e) {
+        alert('Dropped chore');
+    });
+
 };
 
 Template.children.events({

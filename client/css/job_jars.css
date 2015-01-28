@@ -6,6 +6,10 @@ body {
     height: 100%;
 }
 
+h1 {
+    text-align: center;
+}
+
 .draggable {
     filter: alpha(opacity=60);
     opacity: 0.6;
@@ -163,9 +167,11 @@ a:active {
 }
 
 .jar {
+    /*
     background-image: url("http://images.clipartpanda.com/jar-clipart-jar-with-red-lid-hi.png");
     height: 595px;
     width: 385px;
+    */
     position: absolute;
     left: 200px;
 }
@@ -173,7 +179,7 @@ a:active {
 
 .chore {
     background-color: lightblue;
-    height: 20px;
+    height: 60px;
     border: 1px solid black;
     -webkit-border-radius: 10px;
       -moz-border-radius: 10px;

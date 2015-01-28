@@ -1,24 +1,57 @@
 <template name="myChores">
     <div class="container">
         <div class="row">
-            <div class="col-md-4">
-            <h1>My Chore List</h1>
-            <ul>
-            {{#each tasks}}
-                <div class="chore" draggable="true">
-                    <span>{{task}}</span>
-                    <span>{{value}}</span>
-                </div>
-            {{/each}}
-            </ul>
-            </div>
-
-            <div class="col-md-8">
-                <h1>My Completed Chores</h1>
-                <div class="jar" droppable="true">
-
+            <div class="col-xs-4">
+                <h1>Available Chores</h1>
+                <div id="available-chores">
+                    {{#each tasks}}
+                        {{> availableChore}}
+                    {{/each}}
                 </div>
             </div>
+            <div class="col-xs-4">
+                <h1>My Chores</h1>
+                <div class="mine">
+                    {{#each mines}}
+                        {{ >mine}}
+                    {{/each}}
+                </div>
+            </div>
+            <div class="col-xs-4">
+                <h1>Done Chores</h1>
+                <div class="jar">
+                    {{#each dones}}
+                        {{ >done }}
+                    {{/each}}
+                </div>
+            </div>
+        </div>
+    </div>
+</template>
+
+<template name="options" >
+        <span class="glyphicon glyphicon-edit" ></span>
+        <span class="glyphicon glyphicon-remove-sign"></span>
+</template>
+
+<template name="availableChore">
+   {{> task}}
+</template>
+
+<template name="mine">
+    {{> task}}
+</template>
+
+<template name="done">
+    {{> task}}
+</template>
+
+<template name="task">
+    <div class="chore">
+        <p>Task: {{task}}</p>
+        <span>Value: {{value}}</span>
+        <div style="float: right;">
+            {{> options }}
         </div>
     </div>
 </template>
