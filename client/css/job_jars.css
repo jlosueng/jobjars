@@ -1,5 +1,4 @@
-body {
-    padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
+html, body {
     margin-bottom: 60px;
     position: relative;
     padding-bottom: 80px;
@@ -7,37 +6,29 @@ body {
     background-color: #fffee0;
 }
 
-h1 {
-    text-align: center;
+#container {
+    min-height: 100%;
+    position: relative;
 }
 
-.draggable {
-    filter: alpha(opacity=60);
-    opacity: 0.6;
-}
-
-.dropped {
-    position: static !important;
-}
-.center {
-    margin-left: auto;
-    margin-right: auto;
-    display: block;
+#main-container {
+    padding-top: 75px;
+    padding-right: 10px;
+    padding-left: 10px;
+    padding-bottom: 75px;
 }
 
 .navbar {
     position: absolute;
-    top: 0px;
+    top: 0;
     width: 100%;
-    background-color: #fffee0;
+    background-color: yellow;
 }
 
 .footer {
     position: absolute;
     text-align: center;
     bottom: 0;
-    margin-top: -75px;
-    left: 0;
     height: 75px;
     width: 100%;
     clear: both;
@@ -58,6 +49,34 @@ h1 {
     border-radius: 10px;
 }
 
+.footer td {
+    border: none;
+}
+
+
+h1 {
+    text-align: center;
+}
+
+#login-buttons {
+    padding-top: 50px;
+    margin: auto;
+}
+
+.draggable {
+    filter: alpha(opacity=60);
+    opacity: 0.6;
+}
+
+.dropped {
+    position: static !important;
+}
+.center {
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+}
+
 #newChild {
     position: absolute;
     top: 45px;
@@ -71,12 +90,8 @@ h1 {
 
 #btnAddChild {
     margin: 10px;
-
 }
 
-.footer td {
-    border: none;
-}
 
 a:link {
     text-decoration: none;
@@ -114,12 +129,7 @@ a:active {
     padding-right: 10px;
 }
 
-#main-container {
-    min-height: 800px;
-    padding: 15px 10px 10px 10px;
-    height: 120vh;
-    position: relative;
-}
+
 .List table {
     border-collapse: collapse;
     width: 100%;
@@ -172,15 +182,16 @@ a:active {
     width: 385px;
     */
     position: relative;
-    min-height:300px;
-    width: 90%;
+    height: auto;
+    min-height:400px;
+    width: 95%;
     border-radius: 10px;
 }
 
 
 .chore {
     background-color: lightblue;
-    height: 60px;
+    height: 150px;
     border: 1px solid black;
     -webkit-border-radius: 10px;
       -moz-border-radius: 10px;
@@ -188,6 +199,11 @@ a:active {
     width: 100%;
     margin-bottom: 10px;
     padding-left: 10px;
+}
+
+.chore table, td {
+    border: none;
+    padding: 0px 10px 5px 0px;
 }
 
 #logo {

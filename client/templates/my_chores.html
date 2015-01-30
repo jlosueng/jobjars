@@ -1,7 +1,8 @@
 <template name="myChores">
+    {{TITLE "Job Jars - My Chores"}}
     <div class="container">
         <div class="row-fluid">
-            <div class="col-xs-4 ui-sortable">
+            <div class="col-md-4 ui-sortable">
                 <h1>Available Chores</h1>
                 <div id="available-chores" class="ui-sortable">
                     {{#each tasks}}
@@ -9,7 +10,7 @@
                     {{/each}}
                 </div>
             </div>
-            <div class="col-xs-4 ui-sortable">
+            <div class="col-md-4 ui-sortable">
                 <h1>My Chores</h1>
                 <div id="mine">
                     {{#each mines}}
@@ -17,7 +18,7 @@
                     {{/each}}
                 </div>
             </div>
-            <div class="col-xs-4 ui-sortable">
+            <div class="col-md-4 ui-sortable">
                 <h1>Done Chores</h1>
                 <div id="jar">
                     {{#each dones}}
@@ -48,8 +49,20 @@
 
 <template name="task">
     <div id="{{task_id}}" class="chore ui-state-default" draggable="true">
-        <p>Task: {{task}}</p>
-        <span>Value: {{value}}</span>
+        <table>
+            <tr>
+                <td>Task:</td>
+                <td>{{task}}</td>
+            </tr>
+            <tr>
+                <td>Description:</td>
+                <td>{{desc}}</td>
+            </tr>
+            <tr>
+                <td>Value:</td>
+                <td>{{value}}</td>
+            </tr>
+        </table>
 
         <!--
         if user is a parent then add the edit and delete buttons

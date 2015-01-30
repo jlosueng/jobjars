@@ -125,6 +125,15 @@ Template.login.events({
     'click #btnLoginGoogle' : function(e, t) {
         e.preventDefault();
         Meteor.loginWithGoogle();
+    },
+    'click #btnLoginFacebook' : function(e,t) {
+        e.preventDefault();
+        Meteor.loginWithFacebook();
+    },
+    'click #btnLoginPassword' : function(e,t) {
+        e.preventDefault();
+        Meteor.loginWithPassword();
+
     }
 });
 
@@ -166,3 +175,11 @@ $( ".portlet" )
     .prepend( "<span class='ui-icon ui-icon-minusthick portlet-toggle'></span>");
 
 
+Handlebars.registerHelper("TITLE", function(title) {
+    if (title) {
+        document.title = title;
+    } else {
+        document.title = "Job Jars";
+
+    }
+})
