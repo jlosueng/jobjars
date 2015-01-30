@@ -1,25 +1,25 @@
 <template name="myChores">
     <div class="container">
-        <div class="row">
-            <div class="col-xs-4">
+        <div class="row-fluid">
+            <div class="col-xs-4 ui-sortable">
                 <h1>Available Chores</h1>
-                <div id="available-chores">
+                <div id="available-chores" class="ui-sortable">
                     {{#each tasks}}
                         {{> availableChore}}
                     {{/each}}
                 </div>
             </div>
-            <div class="col-xs-4">
+            <div class="col-xs-4 ui-sortable">
                 <h1>My Chores</h1>
-                <div class="mine">
+                <div id="mine">
                     {{#each mines}}
                         {{ >mine}}
                     {{/each}}
                 </div>
             </div>
-            <div class="col-xs-4">
+            <div class="col-xs-4 ui-sortable">
                 <h1>Done Chores</h1>
-                <div class="jar">
+                <div id="jar">
                     {{#each dones}}
                         {{ >done }}
                     {{/each}}
@@ -47,11 +47,15 @@
 </template>
 
 <template name="task">
-    <div class="chore">
+    <div id="{{task_id}}" class="chore ui-state-default" draggable="true">
         <p>Task: {{task}}</p>
         <span>Value: {{value}}</span>
+
+        <!--
+        if user is a parent then add the edit and delete buttons
         <div style="float: right;">
             {{> options }}
         </div>
+        -->
     </div>
 </template>

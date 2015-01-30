@@ -36,37 +36,52 @@ Template.myChores.helpers({
     },
 
     'mines': function() {
-        return Tasks.find();
     },
 
     'dones': function() {
-        return Tasks.find();
     }
 });
 
 Template.myChores.events ({
-/*
+
     'dragstart .chore': function(e) {
         e.dataTransfer = e.originalEvent.dataTransfer;
-        e.dataTransfer.setData('text', this._id);
+        e.dataTransfer.setData('text', e.target.id);
     },
-    'dragover .jar': function(e) {
+    'dragover #available-chores,#jar,#mine': function(e) {
         e.preventDefault();
     },
-*/
-    'drop .jar': function(e) {
-
-        e.preventDefault();
+    'drop #available-chores,#jar,#mine': function(e) {
         e.dataTransfer = e.originalEvent.dataTransfer;
         var id = e.dataTransfer.getData('text');
-        e.target.appendChild(document.getElementById(id));
+        var elementID = document.getElementById(id);
+        var targetID;
+        if (['jar', 'mine', 'available-chores'].indexOf(e.target.id) >= 0)
+        {
+            e.target.appendChild(elementID);
+            targetID = e.target.id;
+        }
+        else {
+            e.target.parentNode.appendChild(elementID);
+            targetID = e.target.parentNode.id;
+        }
+
+        switch (targetID) {
+            case 'mine':
+                break;
+            case 'jar' :
+                break;
+            case 'available-chores' :
+                break;
+            default :
+                alert('Invalid choice. You shouldn\'t reach this');
+        }
+
+        e.preventDefault();
     }
 });
 
 Template.myChores.rendered = function() {
-    $('body').on('dragstop', '.chore', function(e) {
-        alert('Dropped chore');
-    });
 
 };
 

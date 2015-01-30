@@ -4,6 +4,7 @@ body {
     position: relative;
     padding-bottom: 80px;
     height: 100%;
+    background-color: #fffee0;
 }
 
 h1 {
@@ -25,11 +26,10 @@ h1 {
 }
 
 .navbar {
-    background-color: #ffffcc;
     position: absolute;
     top: 0px;
     width: 100%;
-    z-index: 1;
+    background-color: #fffee0;
 }
 
 .footer {
@@ -40,7 +40,6 @@ h1 {
     left: 0;
     height: 75px;
     width: 100%;
-    background-color: lightcyan;
     clear: both;
 }
 
@@ -166,14 +165,16 @@ a:active {
 
 }
 
-.jar {
+#jar,#mine,#available-chores {
     /*
     background-image: url("http://images.clipartpanda.com/jar-clipart-jar-with-red-lid-hi.png");
     height: 595px;
     width: 385px;
     */
-    position: absolute;
-    left: 200px;
+    position: relative;
+    min-height:300px;
+    width: 90%;
+    border-radius: 10px;
 }
 
 
@@ -184,7 +185,7 @@ a:active {
     -webkit-border-radius: 10px;
       -moz-border-radius: 10px;
     border-radius: 10px;
-    width: 300px;
+    width: 100%;
     margin-bottom: 10px;
     padding-left: 10px;
 }
@@ -303,6 +304,20 @@ span.buttonText {
     height: 50px;
 }
 
-.about {
-    width: 50%;
+h1.about {
+    margin: 20px auto 40px;
+    font-size: 60px;
+    font-family: "verdana", 'sans-serif';
+}
+
+p.about {
+    margin: 20px auto;
+    width: 75%;
+    text-align: justify;
+    font-family: "verdana", "sans-serif";
+    font-size: 30px;
+}
+
+#about-div {
+    border-radius: 10px;
 }

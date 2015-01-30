@@ -2,7 +2,6 @@
     <h1>Children</h1>
     <table class="List" >
         <tr>
-            <th>Task</th>
             <th>Name</th>
             <th>Chores Completed</th>
             <th>Rewards Earned</th>
@@ -10,9 +9,8 @@
         </tr>
         {{#each child}}
         <tr>
-            <td><a href="{{pathFor 'child'}}">{{task}}</a></td>
             <td>{{name}}</td>
-            <td>{{completed}}</td>
+            <td>{{completedTasks}}</td>
             <td>{{rewardsEarned}}</td>
         </tr>
         {{/each}}
