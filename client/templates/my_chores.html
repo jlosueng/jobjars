@@ -1,26 +1,32 @@
 <template name="myChores">
+    {{#if currentUser}}
     {{TITLE "Job Jars - My Chores"}}
+    User: {{currentUser._id}}
     <div class="container">
         <div class="row-fluid">
             <div class="col-md-4 ui-sortable">
                 <h1>Available Chores</h1>
                 <div id="available-chores" class="ui-sortable">
                     {{#each tasks}}
-                        {{> availableChore}}
+                        {{#if available}}
+                            {{> availableChore}}
+                        {{/if}}
                     {{/each}}
                 </div>
             </div>
-            <div class="col-md-4 ui-sortable">
+            <div class="col-md-4 ">
                 <h1>My Chores</h1>
-                <div id="mine">
+                <div id="mine" class="ui-sortable">
                     {{#each mines}}
+                       {{#if isAvailable}}
                         {{ >mine}}
+                       {{/if}}
                     {{/each}}
                 </div>
             </div>
-            <div class="col-md-4 ui-sortable">
+            <div class="col-md-4 ">
                 <h1>Done Chores</h1>
-                <div id="jar">
+                <div id="jar" class="ui-sortable">
                     {{#each dones}}
                         {{ >done }}
                     {{/each}}
@@ -28,6 +34,7 @@
             </div>
         </div>
     </div>
+    {{/if}}
 </template>
 
 <template name="options" >

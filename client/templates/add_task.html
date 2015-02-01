@@ -1,27 +1,33 @@
-<template name="addTask">
+<template name="addTask" xmlns="http://www.w3.org/1999/html">
     <div class="container" id="newTask">
         <form name="newTask" id="newTaskForm">
-            <input type="text" id="taskDesc" name="taskDesc" placeholder="Task description" /><br>
-            <input type="text" id="taskValue" name="taskValue" placeholder="Task value" /><br>
+            <input type="text" id="taskSum" name="taskSum" placeholder="Short Description" /><br>
+            <textarea id="taskDesc" rows='5' cols='50' name="taskDesc" placeholder="Full task description"></textarea><br>
+            <input type="number" id="taskValue" name="taskValue" placeholder="Task value" /><br>
             <select name="taskFreq" id="taskFreq">
                 <option value="Daily">Daily</option>
                 <option value="Weekly">Weekly</option>
                 <option value="Monthly">Monthly</option>
             </select><br>
-            <p>Only allowed to perform the task</p>
-            <input type="checkbox" name="restrictedTo" value="hannah">Hannah<br>
-            <input type="checkbox" name="restrictedTo" value="nikki">Nikki<br>
-            <input type="checkbox" name="restrictedTo" value="kelsey">Kelsey<br>
-            <input type="checkbox" name="restrictedTo" value="dylan">Dylan<br>
-            <p>Age restrictions</p>
+
+            <p>Minimum age for this chore</p>
             <select name="ageRestriction">
-                <option value="u5">Younger than 5</option>
-                <option value="al5">At least 5 years old</option>
-                <option value="al7">At least 7 years old</option>
-                <option value="al9">At least 9 years old</option>
-                <option value="al11">At least 11 years old</option>
-                <option value="al13">At least 13 years old</option>
-                <option value="al16">At least 16 years old</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+                <option value="11">11</option>
+                <option value="12">12</option>
+                <option value="13">13</option>
+                <option value="14">14</option>
+                <option value="15">15</option>
+                <option value="16">16</option>
+                <option value="17">17</option>
+                <option value="18">18</option>
             </select><br>
             <button class="btn" id="btnAddTask">Add Task</button>
         </form>
