@@ -1,7 +1,7 @@
-###
-Meteor.subscribe('tasks');
-Meteor.subscribe('people');
-###
+Meteor.subscribe('tasks')
+Meteor.subscribe('people')
+Meteor.subscribe('myTasks', Meteor.userId())
+Meteor.subscribe('profile')
 
 Meteor.startup( ->
 )
@@ -39,7 +39,7 @@ Template.myChores.helpers(
     return Tasks.find()
   ,
   'mines': ->
-    return Tasks.find()
+    return People.find({userId: Meteor.userId()})
   ,
   'dones': ->
     return Tasks.find()
