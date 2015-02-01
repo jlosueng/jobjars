@@ -18,8 +18,9 @@
                 <h1>My Chores</h1>
                 <div id="mine" class="ui-sortable">
                     {{#each mines}}
-                       {{#if isAvailable}}
-                        {{ >mine}}
+                       {{#if available}}
+                       {{else }}
+                            {{ >mine}}
                        {{/if}}
                     {{/each}}
                 </div>

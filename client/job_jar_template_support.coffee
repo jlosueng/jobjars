@@ -39,8 +39,10 @@ Template.myChores.helpers(
     return Tasks.find()
   ,
   'mines': ->
+    return Tasks.find()
   ,
   'dones': ->
+    return Tasks.find()
 )
 
 Template.myChores.events (
