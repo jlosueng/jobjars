@@ -83,3 +83,78 @@ Template.children.helpers(
 
 Template.children.rendered = ->
     $('#newChild').hide()
+
+Template.rewardsEarned.rendered = ->
+
+Template.rewardsEarned.events(
+    'click .btn': (e, t) ->
+        e.preventDefault()
+        alert('Reward button clicked')
+)
+
+Template.addTask.events(
+    'submit': ->
+        alert($('#taskDesc').val())
+)
+
+Template.addChild.events()
+
+Template.addChild.events(
+    'click #btnAddChild' : (e, t) ->
+        e.preventDefault();
+        name = t.find('#childName').value
+        dob = t.find('#childDob').value
+        userId = Meteor.userId();
+        People.insert({'userID': userId, 'name': name, 'dob':dob})
+        container = $('#newChild');
+        container.hide();
+,
+    'click .closeBox' : (e) ->
+        e.preventDefault();
+        ###
+        container = $('#newChild')
+        container.hide();
+        ###
+        $('#newChild').hide()
+)
+
+Template.login.events(
+      'click #btnLoginGoogle' : (e, t) ->
+          e.preventDefault()
+          alert('login with Google')
+          Meteor.loginWithGoogle()
+,
+      'click #btnLoginFacebook' : (e,t) ->
+          e.preventDefault()
+          Meteor.loginWithFacebook()
+,
+      'click #btnLoginPassword' : (e, t) ->
+          e.preventDefault()
+          Meteor.loginWithPassword()
+)
+
+Template.chores.helpers(
+  tasks: ->
+      return Tasks.find()
+)
+
+$( ".column" ).sortable(
+    connectWith: ".column",
+    handle: ".portlet-header",
+    cancel: ".portlet-toggle",
+    start: (event, ui) ->
+        ui.item.addClass('tilt');
+        tilt_direction(ui.item);
+    ,
+    stop: (event, ui) ->
+        ui.item.removeClass("tilt")
+        $("html").unbind('mousemove', ui.item.data("move_handler"))
+        ui.item.removeData("move_handler")
+)
+
+
+$( ".portlet" )
+  .addClass( "ui-widget ui-widget-content ui-helper-clearfix ui-corner-all" )
+  .find( ".portlet-header" )
+  .addClass( "ui-widget-header ui-corner-all" )
+  .prepend( "<span class='ui-icon ui-icon-minusthick portlet-toggle'></span>")
