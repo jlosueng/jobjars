@@ -1,7 +1,5 @@
 <template name="myChores">
     {{#if currentUser}}
-    {{TITLE "Job Jars - My Chores"}}
-    User: {{currentUser._id}}
     <div class="container">
         <div class="row-fluid">
             <div class="col-md-4 ui-sortable">
@@ -79,19 +77,19 @@
 </template>
 
 <template name="my_task">
-    <div id="{{myTasks.task_id}}" class="chore ui-state-default" draggable="true">
+    <div id="{{task_id}}" class="chore ui-state-default" draggable="true">
         <table>
             <tr>
                 <td>Task:</td>
-                <td>{{myTasks.task}}</td>
+                <td>{{task}}</td>
             </tr>
             <tr>
                 <td>Description:</td>
-                <td>{{myTasks.desc}}</td>
+                <td>{{desc}}</td>
             </tr>
             <tr>
                 <td>Value:</td>
-                <td>{{myTasks.value}}</td>
+                <td>{{value}}</td>
             </tr>
         </table>
 

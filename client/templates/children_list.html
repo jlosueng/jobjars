@@ -1,25 +1,21 @@
-<template name="children">
-    <h1>Children</h1>
+<template name="childrenList">
     <table class="List" >
         <tr>
             <th>Name</th>
-            <th>Chores Completed</th>
-            <th>Rewards Earned</th>
+
         </tr>
         {{#each child}}
         <tr>
-            <td>{{name}}</td>
-            <td>{{completedTasks}}</td>
-            <td>{{rewardsEarned}}</td>
+            <td>{{name}}<span id="delete-child" class='glyphicon glyphicon-minus'></span><span id="edit-child" class="glyphicon glyphicon-pencil"></span></td>
         </tr>
         {{/each}}
-    </table>
+    </table><br>
         <span id="addChild">
           <a href="#">
               <i class='glyphicon glyphicon-plus'></i>
               Add Child
           </a>
         </span>
-    {{>addChild}}
+    {{>addChild}}<br>
 </template>
 

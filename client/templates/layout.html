@@ -1,13 +1,10 @@
 <template name="layout">
-    <head><title>{{TITLE}}</title></head>
-    <body>
     <div id="container">
         {{> yield region="navbar"}}
-        <div class="container" id="main-container">
+        <div id="body">
         {{> yield}}
         </div>
         {{> yield region="footer"}}
     </div>
-    </body>
 </template>
 

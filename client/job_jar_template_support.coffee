@@ -1,7 +1,11 @@
-Meteor.subscribe('tasks')
-Meteor.subscribe('people')
-Meteor.subscribe('myTasks', Meteor.userId())
-Meteor.subscribe('profile')
+Meteor.autorun( ->
+  Meteor.subscribe('tasks')
+  Meteor.subscribe('people')
+  Meteor.subscribe('myTasks', Meteor.userId())
+  Meteor.subscribe('profile')
+  Meteor.subscribe('userData')
+)
+
 
 Meteor.startup( ->
 )
@@ -13,6 +17,34 @@ Handlebars.registerHelper("TITLE", (title) ->
   else
     document.title = "Job Jars"
 )
+
+
+
+Template.register.events({
+  'click #registerFormBtn' : (event) ->
+    event.preventDefault()
+    name = $('#newUserFirstName').val()
+    password = $('#newUserPassword').val()
+    email = $('#newUserEmail').val()
+    password2 = $('#newUserConfirmPassword').val()
+
+    if (password != password2)
+      alert('Passwords must match')
+    else
+      Accounts.createUser({
+          email:    email,
+          password: password,
+          profile: {
+            name: name
+            role: parent
+            parentOf: []
+          }
+      })
+      Router.go('home_page')
+
+    Account.createUser()
+
+})
 
 Template.chores.events({
   'click #addTask': (event) ->
@@ -42,7 +74,21 @@ Template.myChores.helpers(
     return People.find({userId: Meteor.userId()})
   ,
   'dones': ->
-    return Tasks.find()
+    return null
+)
+
+Template.my_task.helpers(
+    'task': ->
+      return this['myTasks'][0]['task']
+
+    'task_id': ->
+      return this['myTasks'][0]['task_id']
+
+    'desc': ->
+      return this['myTasks'][0]['desc']
+
+    'value': ->
+      return this['myTasks'][0]['value']
 )
 
 Template.myChores.events (
@@ -75,7 +121,7 @@ Template.myChores.events (
 
 Template.children.events(
     'click #addChild' : (event) ->
-    $('#newChild').toggle()
+      $('#newChild').toggle()
 )
 
 Template.children.helpers(
@@ -86,6 +132,14 @@ Template.children.helpers(
 Template.children.rendered = ->
     $('#newChild').hide()
 
+Template.childrenList.helpers(
+    'child': ->
+      return People.find()
+)
+Template.childrenList.events(
+  'click #addChild' : (event) ->
+    $('#newChild').toggle()
+)
 Template.rewardsEarned.rendered = ->
 
 Template.rewardsEarned.events(
@@ -106,34 +160,45 @@ Template.addChild.events(
         e.preventDefault();
         name = t.find('#childName').value
         dob = t.find('#childDob').value
-        userId = Meteor.userId();
+        userId = Meteor.userId()
         People.insert({'userID': userId, 'name': name, 'dob':dob})
-        container = $('#newChild');
-        container.hide();
-,
-    'click .closeBox' : (e) ->
-        e.preventDefault();
-        ###
         container = $('#newChild')
-        container.hide();
-        ###
-        $('#newChild').hide()
+        container.hide()
+    ,
+    'click #closeAddChildBox' : (e) ->
+      e.preventDefault()
+      $('#newChild').hide()
 )
 
 Template.login.events(
       'click #btnLoginGoogle' : (e, t) ->
           e.preventDefault()
-          alert('login with Google')
           Meteor.loginWithGoogle()
-,
+      ,
       'click #btnLoginFacebook' : (e,t) ->
           e.preventDefault()
-          Meteor.loginWithFacebook()
-,
+          #Meteor.loginWithFacebook()
+      ,
       'click #btnLoginPassword' : (e, t) ->
           e.preventDefault()
-          Meteor.loginWithPassword()
+          $('#login-form-div').toggle()
+      ,
+      'click #login-button' : (e) ->
+        e.preventDefault()
+        email = $('#login-email').val()
+        password = $('#login-password').val()
+        Meteor.loginWithPassword(email, password, (e) ->
+          if (e)
+            sweetAlert {title: "Oops", text: "There was a problem with your login. Please try again.", type: "error"}
+          else
+            alert 'Logged in'
+        )
+      ,
+      'click #cancel-login-button' : (e) ->
+        e.preventDefault()
+        $('#login-form-div').hide()
 )
+
 
 Template.chores.helpers(
   tasks: ->
@@ -160,3 +225,30 @@ $( ".portlet" )
   .find( ".portlet-header" )
   .addClass( "ui-widget-header ui-corner-all" )
   .prepend( "<span class='ui-icon ui-icon-minusthick portlet-toggle'></span>")
+
+
+
+Template.profile.helpers(
+  'name' : ->
+    if (Meteor.user().services.google)
+      Meteor.user().services.google.name
+    else if Meteor.user().services.password
+      Meteor.user().profile.name
+  ,
+  'email' : ->
+    if (Meteor.user().services.google)
+      Meteor.user().services.google.email
+    else if Meteor.user().services.password
+      Meteor.user().emails[0]['address']
+)
+
+Template.profile.events({
+  'click #btn-edit-profile': ->
+    Router.go('editProfile')
+})
+
+Template.homePage.events({
+  'click #registerBtnHomePage': (e) ->
+    e.preventDefault()
+    Router.go('register')
+})
