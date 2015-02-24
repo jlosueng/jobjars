@@ -1,9 +1,10 @@
 Meteor.autorun( ->
   Meteor.subscribe('tasks')
-  Meteor.subscribe('people')
+  Meteor.subscribe('parents', Meteor.userId())
+  Meteor.subscribe('children')
   Meteor.subscribe('myTasks', Meteor.userId())
-  Meteor.subscribe('profile')
-  Meteor.subscribe('userData')
+  Meteor.subscribe('profile', Meteor.userId())
+  Meteor.subscribe('userData', Meteor.userId())
 )
 
 
@@ -36,8 +37,7 @@ Template.register.events({
           password: password,
           profile: {
             name: name
-            role: parent
-            parentOf: []
+            role: "parent"
           }
       })
       Router.go('home_page')
@@ -45,6 +45,15 @@ Template.register.events({
     Account.createUser()
 
 })
+
+Template.navbar.helpers(
+  'isParent': ->
+    if Meteor.user().profile.role is "parent"
+      return true
+    else
+      return false
+)
+
 
 Template.chores.events({
   'click #addTask': (event) ->
@@ -68,13 +77,13 @@ Template.choresDone.helpers(
 
 Template.myChores.helpers(
   'tasks': ->
-    return Tasks.find()
+    return Tasks.find({available: true})
   ,
   'mines': ->
-    return People.find({userId: Meteor.userId()})
+    return Children.find({userId: Meteor.userId()})
   ,
   'dones': ->
-    return null
+    return Children.find({}, {fields: {'completedTasks':1}})
 )
 
 Template.my_task.helpers(
@@ -103,18 +112,13 @@ Template.myChores.events (
       e.dataTransfer = e.originalEvent.dataTransfer
       id = e.dataTransfer.getData('text')
       elementID = document.getElementById(id)
-      if (['jar', 'mine', 'available-chores'].indexOf(e.target.id) >= 0)
+      validNodes = ['jar', 'mine', 'available-chores']
+      if (e.target.id in validNodes)
           e.target.appendChild(elementID)
           targetID = e.target.id
-      else
+      else if (e.target.parentNode in validNodes)
           e.target.parentNode.appendChild(elementID)
           targetID = e.target.parentNode.id
-
-      switch targetID
-          when 'mine' then break
-          when 'jar' then break
-          when 'available-chores' then break
-          else alert('Invalid choice. You shouldn\'t reach this')
 
       e.preventDefault()
 )
@@ -126,7 +130,7 @@ Template.children.events(
 
 Template.children.helpers(
     'child': ->
-        return People.find()
+        return Children.find({childOf: Meteor.userId()})
 )
 
 Template.children.rendered = ->
@@ -134,7 +138,7 @@ Template.children.rendered = ->
 
 Template.childrenList.helpers(
     'child': ->
-      return People.find()
+      return Children.find({childOf: Meteor.userId()})
 )
 Template.childrenList.events(
   'click #addChild' : (event) ->
@@ -158,12 +162,13 @@ Template.addChild.events()
 Template.addChild.events(
     'click #btnAddChild' : (e, t) ->
         e.preventDefault();
-        name = t.find('#childName').value
-        dob = t.find('#childDob').value
-        userId = Meteor.userId()
-        People.insert({'userID': userId, 'name': name, 'dob':dob})
-        container = $('#newChild')
-        container.hide()
+        name = $('#childName').val()
+        dob = $('#childDob').val()
+        username = $('#childUserName').val()
+        password = $('#childPassword').val()
+        Meteor.call( 'createChild', name, username, password, dob, Meteor.userId())
+
+        $('#newChild').hide()
     ,
     'click #closeAddChildBox' : (e) ->
       e.preventDefault()
@@ -171,6 +176,7 @@ Template.addChild.events(
 )
 
 Template.login.events(
+      ###
       'click #btnLoginGoogle' : (e, t) ->
           e.preventDefault()
           Meteor.loginWithGoogle()
@@ -179,6 +185,8 @@ Template.login.events(
           e.preventDefault()
           #Meteor.loginWithFacebook()
       ,
+
+      ###
       'click #btnLoginPassword' : (e, t) ->
           e.preventDefault()
           $('#login-form-div').toggle()
@@ -202,7 +210,8 @@ Template.login.events(
 
 Template.chores.helpers(
   tasks: ->
-      return Tasks.find()
+      myParentId = Children.find({_id: Meteor.userId()}, {fields : {_id: 0, childOf: 1}})
+      return Tasks.find({createdBy: myParentId})
 )
 
 $( ".column" ).sortable(
@@ -252,3 +261,10 @@ Template.homePage.events({
     e.preventDefault()
     Router.go('register')
 })
+
+Template.coming_soon.rendered = ->
+  $('.navbar').hide()
+  $('body').css('background-image', "url('/child_raking.jpg')")
+  $('body').css('background-repeat', 'no-repeat')
+  $('body').css('background-color', '#ffffff')
+

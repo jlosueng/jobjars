@@ -1,18 +1,22 @@
 <template name="overview">
     {{#if currentUser}}
-    <h1>Dashboard</h1>
+    <h1>Overview {{currentUser._id}} </h1>
     <div class="row-fluid">
-        <div class="col-md-3 col-lg-3 listPanel" >
-            {{> chores }}
-        </div>
-        <div class="col-md-3 col-lg-3 listPanel" >
-            {{> children}}
-        </div>
-        <div class="col-md-2 col-lg-3 listPanel">
-            {{> rewardsEarned}}
-        </div>
-        <div class="col-md-3 col-lg-3 listPanel">
-            {{> choresDone}}
+        <div class="col-md-8 col-md-offset-2">
+            <table id="overview-table">
+                <tr>
+                    <th>Child</th>
+                    <th>Chores Completed</th>
+                    <th>Rewards Earned</th>
+                    <th> </th>
+                </tr>
+                <tr>
+                    <td>{{name}}</td>
+                    <td>{{choresCompleted}}</td>
+                    <td>{{rewardsEarned}}</td>
+                    <td><button>Pay Now</button></td>
+                </tr>
+            </table>
         </div>
     </div>
     {{/if}}

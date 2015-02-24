@@ -13,7 +13,6 @@ html, body {
     position: absolute;
     top: 0;
     width: 100%;
-    background-color: #C0C0C0;
     padding: 10px;
     margin-bottom: 25px;
 }
@@ -30,7 +29,6 @@ html, body {
     width: 100%;
     clear: both;
     padding-top: 25px;
-    background-color: #C0C0C0;
 }
 
 .footer p {
@@ -86,6 +84,23 @@ h1 {
     display: block;
 }
 
+#overview-table {
+    margin: auto;
+    border: 1px solid black;
+
+}
+
+#overview-table th {
+    padding: 5px;
+    border: 1px solid black;
+    background-color: #C0C0C0;
+}
+
+#overview-table td {
+    padding: 5px;
+    border: 1px solid black;
+}
+
 #newChild {
     position: absolute;
     top: 45px;
@@ -137,9 +152,7 @@ h1 {
     border: 1px solid black;
 }
 
-.jumbotron {
-    background-color: #C0C0C0;
-}
+
 
 #registerBtn {
     font-family: Arial, sans-serif;
@@ -154,13 +167,7 @@ h1 {
 }
 
 #registerBtnHomePage {
-    font-family: Arial, sans-serif;
-    font-size: 25px;
-    height: 3em;
-    margin-top: -35px;
-    background-color: #336699;
-    color: #FFFFFF;
-    float: right;
+    margin:auto;
 }
 
 .jumbotron p {
@@ -357,4 +364,133 @@ p.about {
 
 #about-div {
     border-radius: 10px;
+}
+
+.comingSoon {
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+}
+
+h1.comingSoon {
+    margin-top: 150px;
+    font-size: 50px;
+    color: #eeeeee;
+    text-align: left;
+    margin-left: 500px;
+}
+
+h2.comingSoon {
+    font-size: 24px;
+    color: #eeeeee;
+    text-align: left;
+    margin-left: 500px;
+}
+
+.cf:before, .cf:after {
+    content: "";
+    display: table;
+}
+
+.cf:after {
+    clear:both;
+}
+
+.cf {
+    zoom: 1;
+}
+
+.form-wrapper {
+    width: 450px;
+    padding: 15px;
+    margin: 50px 500px 50px;
+    background: #444;
+    border-radius: 10px;
+    box-shadow: 0 1px 1px rgba(0,0,0,.4) inset, 0 1px 0 rgba(255,255,255,.2);
+}
+
+.form-wrapper input {
+    width: 300px;
+    height: 40px;
+    padding: 10px 5px;
+    float: left;
+    font: bold 15px 'lucida sans', 'trebuchet MS', 'Tahoma';
+    border: 0;
+    background: #eee;
+    border-radius: 3px 0 0 3px;
+}
+
+.form-wrapper input:focus {
+    outline: 0;
+    background: #fff;
+    box-shadow: 0 0 2px rgba(0,0,0,.8) inset;
+}
+
+.form-wrapper input::-webkit-input-placeholder {
+    color: #999;
+    font-weight: normal;
+    font-style: italic;
+}
+
+.form-wrapper input:-moz-placeholder {
+    color: #999;
+    font-weight: normal;
+    font-style: italic;
+}
+
+.form-wrapper input:-ms-input-placeholder {
+    color: #999;
+    font-weight: normal;
+    font-style: italic;
+}
+
+/* Form submit button */
+.form-wrapper button {
+    overflow: visible;
+    position: relative;
+    float: right;
+    border: 0;
+    padding: 0;
+    cursor: pointer;
+    height: 40px;
+    width: 110px;
+    font: bold 15px/40px 'lucida sans', 'trebuchet MS', 'Tahoma';
+    color: #fff;
+    text-transform: uppercase;
+    background: #d83c3c;
+    border-radius: 0 3px 3px 0;
+    text-shadow: 0 -1px 0 rgba(0, 0 ,0, .3);
+}
+
+.form-wrapper button:hover{
+    background: #e54040;
+}
+
+.form-wrapper button:active,
+.form-wrapper button:focus{
+    background: #c42f2f;
+    outline: 0;
+}
+
+.form-wrapper button:before { /* left arrow */
+    content: '';
+    position: absolute;
+    border-width: 8px 8px 8px 0;
+    border-style: solid solid solid none;
+    border-color: transparent #d83c3c transparent;
+    top: 12px;
+    left: -6px;
+}
+
+.form-wrapper button:hover:before{
+    border-right-color: #e54040;
+}
+
+.form-wrapper button:focus:before,
+.form-wrapper button:active:before{
+    border-right-color: #c42f2f;
+}
+
+.form-wrapper button::-moz-focus-inner { /* remove extra button spacing for Mozilla Firefox */
+    border: 0;
+    padding: 0;
 }
